@@ -5,9 +5,11 @@ import { IoMdTime } from "react-icons/io";
 import { RiSendPlane2Line } from "react-icons/ri";
 import { MdOutlineDrafts } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { setOpen } from "../redux/appSlice";
 
-const Sidebar = () => {
-  const sidebarItems = [
+
+const sidebarItems = [
     {
       icon: <MdInbox size={"20px"} />,
       text: "Inbox",
@@ -33,10 +35,14 @@ const Sidebar = () => {
       text: "More",
     },
   ];
+const Sidebar = () => {
+    const dispatch=useDispatch();
+
+ 
   return (
     <div className="w-[15%]">
       <div className="p-3">
-        <button className="bg-[#C1E7FE] flex gap-4 items-center rounded-2xl py-4 px-6 hover:shadow-md">
+        <button onClick={()=>dispatch(setOpen(true))} className="bg-[#C1E7FE] flex gap-4 items-center rounded-2xl py-4 px-6 hover:shadow-md">
           <RiPencilFill size="24px" />
           <span className="text-[14px]">Compose</span>
         </button>
